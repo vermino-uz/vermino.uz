@@ -1,0 +1,522 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.lock-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.lock-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lock-content {
+    text-align: center;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transform: translateY(-10%);
+}
+
+.time {
+    font-size: 6rem;
+    font-weight: 200;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.date {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.password-container {
+    margin-top: 20px;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.password-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    padding: 6px 20px;
+    padding-right: 40px;
+    width: 160px;
+    color: white;
+    font-size: 16px;
+    text-align: start;
+    outline: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.submit-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.submit-button:hover {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.submit-button:active {
+    transform: translateY(-10%) scale(0.95);
+}
+
+.submit-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+.password-input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+
+
+.password-input::placeholder {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.password-input.error {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.hint {
+    font-size: 0.6rem;
+    opacity: 0.6;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}
+
+.user-icon {
+    background-color: #9a9a9a;
+    width: 100px;
+    height: 100px;
+    margin: 30px auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.user-name {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+body {
+    background-image: url('images/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.terminal {
+    background-color: rgba(25, 25, 25, 0.75);
+    width: 100%;
+    max-width: 580px;
+    border-radius: 6px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform, left, top;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-header {
+    background-color: rgba(60, 60, 60, 0.8);
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+    height: 26px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-left: 8px;
+}
+
+.terminal-buttons span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #ff5f56;
+    position: relative;
+}
+
+.terminal-buttons span:nth-child(2) {
+    background-color: #ffbd2e;
+}
+
+.terminal-buttons span:nth-child(3) {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    color: #9a9a9a;
+    font-size: 13px;
+    margin-left: 16px;
+    font-weight: 400;
+}
+
+.terminal-content {
+    padding: 10px 12px;
+    height: 280px;
+    overflow-y: auto;
+    font-size: 12px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 1.5;
+    color: #f0f0f0;
+    font-family: 'SF Mono', Menlo, Monaco, 'Courier New', monospace;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.link {
+    color: #64D2FF;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+}
+.maintext {
+    color: #00f94b;
+}
+.description {
+    color: #9a9a9a;
+}
+
+.link:hover {
+    color: #A5E7FF;
+    text-decoration: none;
+}
+
+.link:active {
+    color: #3AA3FF;
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.link:hover::after {
+    transform: scaleX(1);
+}
+
+.line {
+    display: flex;
+    margin-bottom: 6px;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-out forwards;
+}
+
+.prompt {
+    color: #f0f0f0;
+    margin-right: 6px;
+    opacity: 0.95;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.command {
+    color: #f0f0f0;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.output {
+    color: #d4d4d4;
+    margin: 0 0 6px 0;
+    opacity: 0;
+    animation: fadeIn 0.15s ease-out forwards;
+    padding-left: 2px;
+    white-space: pre-line;
+    line-height: 1.3;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-message {
+    margin-bottom: 8px;
+    color: #e4e4e4;
+}
+
+.welcome-message + .line {
+    margin-top: 4px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 6px;
+    height: 14px;
+    background-color: #f0f0f0;
+    animation: blink 1s infinite;
+    margin-left: 1px;
+    position: relative;
+    top: 2px;
+    opacity: 0.9;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Dock Styling */
+.dock {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.dock-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 4px 4px 10px 4px;
+    display: flex;
+    gap: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dock-item {
+    position: relative;
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dock-item:first-child::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dock-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.dock-item:hover {
+    transform: scale(1.1) translateY(-8px);
+}
+
+.dock-tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.dock-item:hover .dock-tooltip {
+    opacity: 1;
+}
+
+/* Music Animation */
+@keyframes musicBars {
+    0% { height: 2px; }
+    50% { height: 12px; }
+    100% { height: 2px; }
+}
+
+.music-playing {
+    display: inline-flex;
+    align-items: flex-end;
+    height: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.music-playing:hover {
+    opacity: 1;
+}
+
+.music-playing span {
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    margin: 0 1px;
+    background: #64D2FF;
+    animation: musicBars 0.5s ease infinite;
+    box-shadow: 0 0 2px rgba(100, 210, 255, 0.5);
+    border-radius: 1px;
+}
+
+.music-playing span:nth-child(2) { animation-delay: 0.1s; }
+.music-playing span:nth-child(3) { animation-delay: 0.2s; }
+.music-playing span:nth-child(4) { animation-delay: 0.3s; }
+
+/* Navigation Animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.navigating {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid #64D2FF;
+    white-space: nowrap;
+    margin: 0;
+    letter-spacing: 0.1em;
+    color: #64D2FF;
+    font-family: 'SF Mono', Menlo, Monaco, 'Courier New', monospace;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar Styling */
+.terminal-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes typeWriter {
+    from { width: 0; }
+    to { width: 100%; }
+}

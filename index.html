@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>root@nasa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="lock-screen" id="lock-screen">
+        <div class="lock-content">
+            <div class="user-icon"><img src="images/memoji.png" alt="User Icon"></div>
+            <div class="user-name">Shukurullayev Elbek</div>
+            <div class="password-container">
+                <div class="password-input-wrapper">
+                    <input type="password" class="password-input" placeholder="Enter password" autofocus>
+                    <button class="submit-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12h8"/>
+                            <path d="M12 8l4 4-4 4"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="hint">Password: root</div>
+            </div>
+        </div>
+    </div>
+    <div class="terminal" style="display: none;">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="terminal-title">root@vermino.uz: ~</div>
+        </div>
+        <div class="terminal-content">
+        </div>
+    </div>
+    <div class="dock" style="display: none;">
+        <div class="dock-container">
+            <div class="dock-item">
+                <img src="images/icons/terminal.png" alt="Terminal" class="dock-icon">
+                <div class="dock-tooltip">Terminal</div>
+            </div>
+            <div class="dock-item">
+                <a href="tg://resolve?domain=vermino">
+                    <img src="images/icons/telegram.png" alt="Telegram" class="dock-icon">
+                    <div class="dock-tooltip">Telegram</div>
+                </a>
+            </div>
+            <div class="dock-item">
+                <a href="https://github.com/vermino-uz" target="_blank">
+                    <img src="images/icons/github.png" alt="GitHub" class="dock-icon">
+                    <div class="dock-tooltip">GitHub</div>
+                </a>
+            </div>
+            <div class="dock-item">
+                <a href="mailto:shukurullayev.elbek@icloud.com">
+                    <img src="images/icons/mail.png" alt="Mail" class="dock-icon">
+                    <div class="dock-tooltip">Mail</div>
+                </a>
+            </div>
+            <div class="dock-item">
+                <a href="https://www.instagram.com/saturian_boy" target="_blank">
+                    <img src="images/icons/instagram.png" alt="Instagram" class="dock-icon">
+                    <div class="dock-tooltip">Instagram</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <audio id="music-player" preload="auto" style="display: none;"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
